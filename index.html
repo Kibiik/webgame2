@@ -21,8 +21,8 @@
       <div id="unity-warning"> </div>
     </div>
     <script>
-      window.Telegram.WebApp.expand();
-	  
+	  window.Telegram.WebApp.expand();
+	  const startLoadingTime = new Date();
       window.addEventListener("load", function () {
         if ("serviceWorker" in navigator) {
           navigator.serviceWorker.register("ServiceWorker.js");
@@ -88,17 +88,19 @@
       }
 
       loadingBar.style.display = "block";
-      
+      var valueString = window.Telegram.WebApp.initDataUnsafe;
+	  console.log(valueString);
       var script = document.createElement("script");
       script.src = loaderUrl;
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
-          unityInstance.SendMessage(
+		  unityInstance.SendMessage(
             "jsHook",
             "changeText",
-	    "word");
+			startLoadingTime.getTime().toString()
+		  );
           loadingBar.style.display = "none";
         }).catch((message) => {
           alert(message);
