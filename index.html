@@ -88,7 +88,7 @@
       }
 
       loadingBar.style.display = "block";
-	  console.log('hello');
+      
       var script = document.createElement("script");
       script.src = loaderUrl;
       script.onload = () => {
@@ -98,8 +98,7 @@
 		  unityInstance.SendMessage(
             "jsHook",
             "changeText",
-			"word"
-		  );
+			"word")
           loadingBar.style.display = "none";
         }).catch((message) => {
           alert(message);
