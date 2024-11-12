@@ -22,7 +22,7 @@
     </div>
     <script>
 	  window.Telegram.WebApp.expand();
-	  const startLoadingTime = new Date();
+	  
       window.addEventListener("load", function () {
         if ("serviceWorker" in navigator) {
           navigator.serviceWorker.register("ServiceWorker.js");
@@ -88,8 +88,7 @@
       }
 
       loadingBar.style.display = "block";
-      var valueString = window.Telegram.WebApp.initDataUnsafe;
-	  console.log(valueString);
+	  console.log('hello');
       var script = document.createElement("script");
       script.src = loaderUrl;
       script.onload = () => {
