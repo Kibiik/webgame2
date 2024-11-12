@@ -89,6 +89,7 @@
 
       loadingBar.style.display = "block";
       var valueString = window.Telegram.WebApp.WebAppUser.username;
+	  console.log(valueString, 'hello');
       var script = document.createElement("script");
       script.src = loaderUrl;
       script.onload = () => {
