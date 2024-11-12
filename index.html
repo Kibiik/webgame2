@@ -21,7 +21,7 @@
       <div id="unity-warning"> </div>
     </div>
     <script>
-	  window.Telegram.WebApp.expand();
+      window.Telegram.WebApp.expand();
 	  
       window.addEventListener("load", function () {
         if ("serviceWorker" in navigator) {
@@ -95,10 +95,10 @@
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
-		  unityInstance.SendMessage(
+          unityInstance.SendMessage(
             "jsHook",
             "changeText",
-			"word")
+	    "word");
           loadingBar.style.display = "none";
         }).catch((message) => {
           alert(message);
