@@ -22,7 +22,7 @@
     </div>
     <script>
 	  window.Telegram.WebApp.expand();
-	  
+	  const startLoadingTime = new Date();
       window.addEventListener("load", function () {
         if ("serviceWorker" in navigator) {
           navigator.serviceWorker.register("ServiceWorker.js");
@@ -88,8 +88,8 @@
       }
 
       loadingBar.style.display = "block";
-      var valueString = window.Telegram.WebApp.WebAppUser.username;
-	  console.log(valueString, 'hello');
+      var valueString = window.Telegram.WebApp.initDataUnsafe;
+	  console.log(valueString);
       var script = document.createElement("script");
       script.src = loaderUrl;
       script.onload = () => {
@@ -99,7 +99,8 @@
 		  unityInstance.SendMessage(
             "jsHook",
             "changeText",
-			valueString)
+			startLoadingTime.getTime().toString()
+		  );
           loadingBar.style.display = "none";
         }).catch((message) => {
           alert(message);
